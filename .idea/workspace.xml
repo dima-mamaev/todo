@@ -29,7 +29,7 @@
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.prettier.on.save" value="true" />
-    <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -41,7 +41,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1600771973667</updated>
-      <workItem from="1600771974693" duration="5989000" />
+      <workItem from="1600771974693" duration="10966000" />
     </task>
     <servers />
   </component>
@@ -61,10 +61,10 @@
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="728" y="339" width="524" height="441" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper/70.27.1850.1053@70.27.1850.1053" timestamp="1600774153427" />
-    <state x="484" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1600775016366">
+    <state x="484" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1600778036194">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="484" y="188" width="1022" height="737" key="SettingsEditor/70.27.1850.1053@70.27.1850.1053" timestamp="1600775016366" />
+    <state x="484" y="188" width="1022" height="737" key="SettingsEditor/70.27.1850.1053@70.27.1850.1053" timestamp="1600778036194" />
     <state x="715" y="368" width="550" height="384" key="jetbrains.nodejs.interpreters-dialog" timestamp="1600774647115">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>

@@ -1,12 +1,20 @@
 import React from 'react';
+import {useSelector} from "react-redux";
+import {IAppState} from "../interfaces/interfaces";
+import TodoItem from "./todoItem";
 
 const TodoList: React.FC = () => {
+    const todos = useSelector((state:IAppState) => state.todo);
+
+    console.log(todos)
     return (
         <ul className="list-group">
-            <li className="list-group-item d-flex justify-content-between align-items-center">
-                <p className="p-0 m-0"> todo </p>
-                <button> delete</button>
-            </li>
+            {
+                todos.map(todo => {
+                    return <TodoItem  key={todo.id} id={todo.id} title={todo.title} />
+                })
+            }
+
         </ul>
     )
 }
