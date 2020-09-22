@@ -8,6 +8,7 @@ export interface IAction {
     payload: ITodo
 }
 
-export interface  IAppState {
+export interface IAppState {
     todo: ITodo[]
 }
+

@@ -1,12 +1,16 @@
 import React from 'react';
-import {ITodo} from "../interfaces/interfaces";
 
-const TodoItem: React.FC<ITodo> = ({title, id}) => {
+type TodoItem = {
+    title: string;
+    id: number;
+    onDelete(id: number): void
+}
 
+const TodoItem: React.FC<TodoItem> = ({title, id, onDelete}) => {
     return (
         <li className="list-group-item d-flex justify-content-between align-items-center">
             <p className="p-0 m-0">{title} </p>
-            <button> delete</button>
+            <button className="btn btn-danger" onClick={() => onDelete(id)}> Delete</button>
         </li>
     )
 }

@@ -1,21 +1,31 @@
 import React from 'react';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {IAppState} from "../interfaces/interfaces";
 import TodoItem from "./todoItem";
+import {deleteTodo} from "../redux/actions/todos";
+import NoTodo from "./noTodos";
 
 const TodoList: React.FC = () => {
-    const todos = useSelector((state:IAppState) => state.todo);
+    const todos = useSelector((state: IAppState) => state.todo);
+    const dispatch = useDispatch()
 
-    console.log(todos)
+    function onDeleteHandler(id: number) {
+        dispatch(deleteTodo(id))
+    }
+
     return (
-        <ul className="list-group">
+        <>
             {
-                todos.map(todo => {
-                    return <TodoItem  key={todo.id} id={todo.id} title={todo.title} />
-                })
+                todos.length === 0 && <NoTodo/>
             }
-
-        </ul>
+            <ul className="list-group">
+                {
+                    todos.map(todo => {
+                        return <TodoItem key={todo.id} id={todo.id} title={todo.title} onDelete={onDeleteHandler}/>
+                    })
+                }
+            </ul>
+        </>
     )
 }
 
