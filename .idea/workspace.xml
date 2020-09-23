@@ -23,12 +23,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/db.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/todoItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/todoItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/todoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/todoList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/actions/actionTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/actionTypes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/todos.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/todos.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/todo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/todo.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/sagas/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sagas/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/requests.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/requests.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/sagas/todos/fetchTodo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sagas/todos/fetchTodo.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +75,7 @@
       <workItem from="1600771974693" duration="18203000" />
       <workItem from="1600790648873" duration="11000" />
       <workItem from="1600844387293" duration="11369000" />
-      <workItem from="1600859180184" duration="14995000" />
+      <workItem from="1600859180184" duration="17708000" />
     </task>
     <servers />
   </component>

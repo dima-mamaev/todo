@@ -10,6 +10,6 @@ export function*  watchFetchTodo () {
 }
 
 function* workerFetchTodo () {
-    const data = yield call(fetchTodos)
-    yield put(addFetchedTodos(data))
+        const data = yield call(fetchTodos)
+        yield put(addFetchedTodos(data))
 }
