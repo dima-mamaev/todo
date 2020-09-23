@@ -6,11 +6,12 @@ import rootReducer from "./redux"
 import {Provider} from "react-redux";
 import createSagaMiddleware from 'redux-saga'
 import logger from "redux-logger"
+import {watchLoadTodo} from "./redux/sagas/todos/todos";
 
 
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware, logger))
-// sagaMiddleware.run()
+sagaMiddleware.run(watchLoadTodo)
 
 ReactDOM.render(
   <Provider store ={store}>

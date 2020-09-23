@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="6c2752d7-1977-422b-b937-0220ee51232e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/noTodos.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/noTodos.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/todoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/todoList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/interfaces.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/interfaces.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/actionTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/actionTypes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/todos.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/todos.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/todo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/todo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,12 +76,24 @@
       <updated>1600771973667</updated>
       <workItem from="1600771974693" duration="18203000" />
       <workItem from="1600790648873" duration="11000" />
-      <workItem from="1600844387293" duration="9821000" />
+      <workItem from="1600844387293" duration="11369000" />
+      <workItem from="1600859180184" duration="5780000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="688" y="378" width="604" height="357" key="#Notifications" timestamp="1600775908098">
@@ -81,5 +116,9 @@
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="715" y="368" width="550" height="384" key="jetbrains.nodejs.interpreters-dialog/70.27.1850.1053@70.27.1850.1053" timestamp="1600774647115" />
+    <state x="658" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1600861376779">
+      <screen x="70" y="27" width="1850" height="1053" />
+    </state>
+    <state x="658" y="259" width="672" height="678" key="search.everywhere.popup/70.27.1850.1053@70.27.1850.1053" timestamp="1600861376779" />
   </component>
 </project>

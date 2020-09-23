@@ -7,7 +7,7 @@ export interface ITodo {
 
 export interface IActionTodo {
     type: string
-    payload: ITodo
+    payload: any
 }
 
 export interface IAppState {

@@ -1,5 +1,5 @@
-import {ADD_TODO, CHECK_TODO, DELETE_TODO} from "./actionTypes";
-import {IActionTodo} from "../../interfaces/interfaces";
+import {ADD_TODO, CHECK_TODO, DELETE_TODO, LOAD_TODO, PUT_TODO} from "./actionTypes";
+import {IActionTodo, ITodo} from "../../interfaces/interfaces";
 
 export const addTodo = (content: string): IActionTodo => ({
     type: ADD_TODO,
@@ -22,4 +22,19 @@ export const checkTodo = (id: number): IActionTodo => ({
     payload: {
         id
     }
+})
+
+export const loadTodo = ()=> ({
+    type:LOAD_TODO
+})
+
+
+type putTodoType = {
+    type: string;
+    payload: ITodo[]
+}
+
+export const putTodo = (todos:ITodo[]) :putTodoType  => ({
+    type: PUT_TODO,
+    payload: todos
 })

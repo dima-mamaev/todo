@@ -2,7 +2,7 @@ import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {IAppState} from "../interfaces/interfaces";
 import TodoItem from "./todoItem";
-import {checkTodo, deleteTodo} from "../redux/actions/todos";
+import {checkTodo, deleteTodo, loadTodo} from "../redux/actions/todos";
 import NoTodo from "./noTodos";
 
 const TodoList: React.FC = () => {
@@ -22,6 +22,8 @@ const TodoList: React.FC = () => {
             {
                 todos.length === 0 && <NoTodo/>
             }
+            <>
+                <button className="btn btn-danger" onClick={() => dispatch(loadTodo())}> Load</button>
             <ul className="list-group">
                 {
                     todos.map(todo => {
@@ -29,6 +31,7 @@ const TodoList: React.FC = () => {
                     })
                 }
             </ul>
+                </>
         </>
     )
 }
