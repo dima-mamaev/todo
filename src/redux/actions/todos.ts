@@ -1,40 +1,21 @@
-import {ADD_TODO, CHECK_TODO, DELETE_TODO, LOAD_TODO, PUT_TODO} from "./actionTypes";
-import {IActionTodo, ITodo} from "../../interfaces/interfaces";
+import {ADD_FETCHED_TODO, ADD_NEW_TODO, FETCH_TODO} from "./actionTypes";
+import {ITodo} from "../../interfaces/interfaces";
 
-export const addTodo = (content: string): IActionTodo => ({
-    type: ADD_TODO,
-    payload: {
-        content: content,
-        id: Math.round(Math.random()*1000),
-        finished: false
-    }
+
+//Fetching & adding todos to store
+export const fetchTodos = ()=> ({
+    type:FETCH_TODO
 })
-
-export const deleteTodo = (id: number): IActionTodo => ({
-    type: DELETE_TODO,
-    payload: {
-        id
-    }
-})
-
-export const checkTodo = (id: number): IActionTodo => ({
-    type: CHECK_TODO,
-    payload: {
-        id
-    }
-})
-
-export const loadTodo = ()=> ({
-    type:LOAD_TODO
-})
-
-
-type putTodoType = {
-    type: string;
-    payload: ITodo[]
-}
-
-export const putTodo = (todos:ITodo[]) :putTodoType  => ({
-    type: PUT_TODO,
+export const addFetchedTodos = (todos:ITodo[]) => ({
+    type: ADD_FETCHED_TODO,
     payload: todos
 })
+// Adding new todo
+
+export const addNewTodo = (todo: ITodo) => ({
+    type: ADD_NEW_TODO,
+    payload: todo
+})
+
+
+

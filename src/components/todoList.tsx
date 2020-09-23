@@ -1,21 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {IAppState} from "../interfaces/interfaces";
 import TodoItem from "./todoItem";
-import {checkTodo, deleteTodo, loadTodo} from "../redux/actions/todos";
 import NoTodo from "./noTodos";
+import {fetchTodos} from "../redux/actions/todos";
 
 const TodoList: React.FC = () => {
-    const todos = useSelector((state: IAppState) => state.todoState);
     const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(fetchTodos())
+    }, [])
 
-    function onDeleteHandler(id: number) {
-        dispatch(deleteTodo(id))
-    }
 
-    function checkHandler(id: number) {
-        dispatch(checkTodo(id))
-    }
+    const todos = useSelector((state: IAppState) => state.todoState);
+
+
 
     return (
         <>
@@ -23,15 +22,15 @@ const TodoList: React.FC = () => {
                 todos.length === 0 && <NoTodo/>
             }
             <>
-                <button className="btn btn-danger" onClick={() => dispatch(loadTodo())}> Load</button>
-            <ul className="list-group">
-                {
-                    todos.map(todo => {
-                        return <TodoItem key={todo.id} todo={todo} onDelete={onDeleteHandler} onCheck={checkHandler}/>
-                    })
-                }
-            </ul>
-                </>
+                <ul className="list-group">
+
+                    {
+                        todos.map(todo => {
+                            return <TodoItem key={todo.id} todo={todo} />
+                        })
+                    }
+                </ul>
+            </>
         </>
     )
 }

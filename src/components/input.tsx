@@ -1,12 +1,13 @@
 import React, {useState} from "react";
-import {useDispatch} from "react-redux";
-import {addTodo} from "../redux/actions/todos";
 import Alert from "./alertMessage";
+import {useDispatch} from "react-redux";
+import {addNewTodo} from "../redux/actions/todos";
+import {ITodo} from "../interfaces/interfaces";
 
 const Input: React.FC = () => {
+    const dispatch = useDispatch()
     const [value, setValue] = useState<string>("")
     const [inputError, setInputError] = useState<boolean>(false)
-    const dispatch = useDispatch()
     function onChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
         setInputError(false)
         const todoMessage = event.target.value
@@ -21,7 +22,12 @@ const Input: React.FC = () => {
             setInputError(true)
             return
         }
-        dispatch(addTodo(value))
+        const newTodo:ITodo = {
+            id: Math.round(Math.random()*100),
+            content: value,
+            finished:false
+        }
+        dispatch(addNewTodo(newTodo))
         setValue("")
     }
 
