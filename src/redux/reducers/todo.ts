@@ -1,9 +1,9 @@
-import {IAction, ITodo} from "../../interfaces/interfaces";
-import {ADD_TODO, DELETE_TODO} from "../actions/actionTypes";
+import { IActionTodo, ITodo} from "../../interfaces/interfaces";
+import {ADD_TODO, CHECK_TODO, DELETE_TODO} from "../actions/actionTypes";
 
-const initialState: ITodo[] = [{title: "todo 1", id: 3565}]
+const initialState: ITodo[] = [{content: "todo 1", id: Math.random(), finished: false}]
 
-const todo = (state = initialState, action: IAction) => {
+const todo = (state = initialState, action: IActionTodo) => {
     switch (action.type) {
         case DELETE_TODO:
             return [
@@ -13,9 +13,19 @@ const todo = (state = initialState, action: IAction) => {
             return [
                 ...state,
                 {
-                    title: action.payload.title,
-                    id: action.payload.id
+                    content: action.payload.content,
+                    id: action.payload.id,
+                    finished: action.payload.finished
                 }
+            ]
+        case CHECK_TODO:
+            return [
+                ...state.map(todo => {
+                    if (todo.id === action.payload.id) {
+                        todo.finished = !todo.finished
+                    }
+                    return todo
+                })
             ]
         default:
             return state

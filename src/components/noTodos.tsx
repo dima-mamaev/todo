@@ -1,15 +1,12 @@
 import React from "react";
+import Loader from "./loader";
 
 const NoTodo: React.FC = () => {
     return (
         <div className="container text-center">
-            <p className="lead">Please type your todo in input above!</p>
-            <div className="spinner-grow" role="status">
-            </div>
+            <p className="lead">There is no available todos...</p>
+            <Loader/>
         </div>
-
     )
-
 }
-
 export default NoTodo

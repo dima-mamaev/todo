@@ -5,7 +5,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/noTodos.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/noTodos.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/todoItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/todoItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/todoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/todoList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/interfaces.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/interfaces.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/actionTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/actionTypes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/todos.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/todos.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/todo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/todo.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +35,9 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectId" id="1hrb5NERM7sQsmxLetcie3fHVFk" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -37,7 +48,7 @@
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.prettier.on.save" value="true" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -51,6 +62,7 @@
       <updated>1600771973667</updated>
       <workItem from="1600771974693" duration="18203000" />
       <workItem from="1600790648873" duration="11000" />
+      <workItem from="1600844387293" duration="8451000" />
     </task>
     <servers />
   </component>
@@ -70,10 +82,10 @@
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state x="728" y="339" width="524" height="441" key="#com.intellij.ide.scriptingContext.ui.PerFileMappingsDialogWrapper/70.27.1850.1053@70.27.1850.1053" timestamp="1600774153427" />
-    <state x="484" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1600778036194">
+    <state x="484" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1600850423494">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
-    <state x="484" y="188" width="1022" height="737" key="SettingsEditor/70.27.1850.1053@70.27.1850.1053" timestamp="1600778036194" />
+    <state x="484" y="188" width="1022" height="737" key="SettingsEditor/70.27.1850.1053@70.27.1850.1053" timestamp="1600850423494" />
     <state x="715" y="368" width="550" height="384" key="jetbrains.nodejs.interpreters-dialog" timestamp="1600774647115">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
