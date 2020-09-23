@@ -1,19 +1,27 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {IAppState} from "../interfaces/interfaces";
+import {IAppState, ITodo} from "../interfaces/interfaces";
 import TodoItem from "./todoItem";
 import NoTodo from "./noTodos";
-import {fetchTodos} from "../redux/actions/todos";
+import {deleteTodo, fetchTodos, checkTodo} from "../redux/actions/todos";
 
 const TodoList: React.FC = () => {
     const dispatch = useDispatch()
+
     useEffect(() => {
         dispatch(fetchTodos())
     }, [])
-
-
     const todos = useSelector((state: IAppState) => state.todoState);
 
+
+    function onDeleteHandler(id: number) {
+        dispatch(deleteTodo(id))
+    }
+
+    function onCheckHandler(todo: ITodo) {
+
+        dispatch(checkTodo(todo))
+    }
 
 
     return (
@@ -26,7 +34,10 @@ const TodoList: React.FC = () => {
 
                     {
                         todos.map(todo => {
-                            return <TodoItem key={todo.id} todo={todo} />
+                            return <TodoItem key={todo.id}
+                                             todo={todo}
+                                             onDelete={onDeleteHandler}
+                                             onCheck={onCheckHandler}/>
                         })
                     }
                 </ul>
