@@ -1,17 +1,25 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {IAppState, ITodo} from "../interfaces/interfaces";
+import {IAppState, IRequest, ITodo} from "../interfaces/interfaces";
 import TodoItem from "./todoItem";
-import NoTodo from "./noTodos";
 import {deleteTodo, fetchTodos, checkTodo} from "../redux/actions/todos";
+import Loader from "./loader";
 
 const TodoList: React.FC = () => {
+    const [todos, setTodos] = useState<ITodo[]>([])
+    const [request, setRequest] = useState<IRequest>({})
     const dispatch = useDispatch()
-
     useEffect(() => {
         dispatch(fetchTodos())
     }, [])
-    const todos = useSelector((state: IAppState) => state.todoState);
+    const todoList = useSelector((state: IAppState) => state.todoState);
+    useEffect(() => {
+        setTodos([...todoList])
+    }, [todoList])
+    const requestTodo = useSelector((state: IAppState) => state.todoRequestState);
+    useEffect(() => {
+        setRequest({...requestTodo})
+    }, [requestTodo])
 
 
     function onDeleteHandler(id: number) {
@@ -19,7 +27,6 @@ const TodoList: React.FC = () => {
     }
 
     function onCheckHandler(todo: ITodo) {
-
         dispatch(checkTodo(todo))
     }
 
@@ -27,20 +34,22 @@ const TodoList: React.FC = () => {
     return (
         <>
             {
-                todos.length === 0 && <NoTodo/>
+                request.todos?.loading && <Loader/>
             }
             <>
-                <ul className="list-group">
+                {
+                    todos.length === 0 && !request.todos?.loading  ? <p>no todos message</p> : <ul className="list-group">
+                        {
+                            todos.map(todo => {
+                                return <TodoItem key={todo.id}
+                                                 todo={todo}
+                                                 onDelete={onDeleteHandler}
+                                                 onCheck={onCheckHandler}/>
+                            })
+                        }
+                    </ul>
+                }
 
-                    {
-                        todos.map(todo => {
-                            return <TodoItem key={todo.id}
-                                             todo={todo}
-                                             onDelete={onDeleteHandler}
-                                             onCheck={onCheckHandler}/>
-                        })
-                    }
-                </ul>
             </>
         </>
     )

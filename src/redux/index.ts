@@ -1,10 +1,10 @@
 import {combineReducers} from "redux";
 import todo from "./reducers/todo";
-import requests from "./reducers/requests";
+import todoRequests from "./reducers/requests/todoRequests";
 
 
 export default combineReducers({
     todoState: todo,
-    requestState: requests,
+    todoRequestState: todoRequests,
 })
 

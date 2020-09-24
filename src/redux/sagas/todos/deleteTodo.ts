@@ -4,7 +4,9 @@ import {deleteTodos} from "../../actions/api";
 
 
 export function* watchDeleteTodo() {
+
     yield takeEvery(DELETE_TODO, workerDeleteTodo)
+
 }
 
 function* workerDeleteTodo(action: any) {

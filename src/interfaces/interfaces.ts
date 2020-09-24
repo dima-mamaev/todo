@@ -12,15 +12,17 @@ export interface IActionTodo {
 
 export interface IAppState {
     todoState: ITodo[],
-    requestState: IRequest
+    todoRequestState: IRequest
 }
 
 export interface IRequest {
     [key: string]: {
         loading: boolean,
         loaded: boolean,
-        error: boolean,
-        errorMessage: string
+        error: {
+            status: boolean,
+            message:string
+        }
     }
 }
 
