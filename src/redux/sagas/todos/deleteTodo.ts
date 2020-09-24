@@ -14,7 +14,7 @@ function* workerDeleteTodo(action: any) {
     try {
         yield call(deleteTodos, action.payload)
         const data:ITodo[] = yield call(fetchTodos)
-        yield put(addFetchedTodos(data))
+        yield put(addFetchedTodos(data.reverse()))
         yield put(todoFetchingSucceed())
 
     } catch (e) {

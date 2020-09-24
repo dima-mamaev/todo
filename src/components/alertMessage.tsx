@@ -5,9 +5,11 @@ type AlertType = {
     color?: "alert alert-primary" | "alert alert-success" | "alert alert-danger"
 }
 
-const Alert: React.FC<AlertType> = ({message = "Ooops something went wrong...", color = "alert alert-primary"}) => <div
+const Alert: React.FC<AlertType> = ({message = "Ooops something went wrong...",
+                                        color = "alert alert-primary"}) =>
+    <div
     className={color} role="alert">
     {message}
-</div>
+    </div>
 
 export default Alert

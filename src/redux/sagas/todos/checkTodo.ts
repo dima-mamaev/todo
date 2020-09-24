@@ -14,7 +14,7 @@ function* workerCheckTodo(action: any) {
     try {
         yield call(updateTodos, action.payload)
         const data: ITodo[] = yield call(fetchTodos)
-        yield put(addFetchedTodos(data))
+        yield put(addFetchedTodos(data.reverse()))
         yield put(todoFetchingSucceed())
     } catch (e) {
         yield put(todoFetchingError(e.message))

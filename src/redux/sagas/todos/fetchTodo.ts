@@ -15,7 +15,7 @@ function* workerFetchTodo() {
     try {
         yield delay(3000)
         const data:ITodo[] = yield call(fetchTodos)
-        yield put(addFetchedTodos(data))
+        yield put(addFetchedTodos(data.reverse()))
         yield put(todoFetchingSucceed())
     } catch (e) {
         yield put(todoFetchingError(e))

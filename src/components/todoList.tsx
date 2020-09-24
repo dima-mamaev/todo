@@ -6,10 +6,13 @@ import {deleteTodo, fetchTodos, checkTodo} from "../redux/actions/todos";
 import Loader from "./loader";
 import Alert from "./alertMessage";
 import Modal from "./modal";
-type ModalMessageType ={
-    show:boolean,
+
+type ModalMessageType = {
+    show: boolean,
     message: string
 }
+
+
 const TodoList: React.FC = () => {
     const dispatch = useDispatch()
 
@@ -33,8 +36,9 @@ const TodoList: React.FC = () => {
     // Todos handlers (delete & check toggle)
     function onDeleteHandler(todo: ITodo) {
         dispatch(deleteTodo(todo.id!))
-        modalMessage(` todo with id:${todo.id} deleted successfully`)
+        modalMessage(` Todo with: content : ${todo.content};id:${todo.id};deleted successfully.`)
     }
+
     function onCheckHandler(todo: ITodo) {
         todo.finished = !todo.finished
         dispatch(checkTodo(todo))
@@ -42,13 +46,17 @@ const TodoList: React.FC = () => {
 
 
     // Modal information window
-    const [modal, setModal]= useState<ModalMessageType>({show:false, message:""})
-    function modalMessage (message:string):void {
-        setModal({show:true, message})
-        setTimeout(()=>{setModal({show:false, message:""})},5000)
+    const [modal, setModal] = useState<ModalMessageType>({show: false, message: ""})
+
+    function modalMessage(message: string): void {
+        setModal({show: true, message})
+        setTimeout(() => {
+            setModal({show: false, message: ""})
+        }, 5000)
     }
-    function modalMessageClose () {
-        setModal({show:false, message:""})
+
+    function modalMessageClose() {
+        setModal({show: false, message: ""})
     }
 
     return (
@@ -58,12 +66,8 @@ const TodoList: React.FC = () => {
                 <Alert message="Server is not available at the moment, try again later!"
                        color="alert alert-danger"/>
             }
-            { // eslint-disable-next-line
-                todos.length === 0 && <Alert color="alert alert-primary"
-                                             message="There are no todos in a list. Just add some new in input below."/>
-            }
             {
-                modal.show && <Modal message={modal.message} onClose={modalMessageClose} />
+                modal.show && <Modal message={modal.message} onClose={modalMessageClose}/>
             }
             <ul className="list-group">
                 {
@@ -78,7 +82,11 @@ const TodoList: React.FC = () => {
             {
                 request.todos?.loading && <Loader/>
             }
-
+            {
+                !requestTodo.todos.loading && todoList.length === 0 && !requestTodo.todos.error.status ?
+                    <Alert color="alert alert-primary"
+                           message="There are no todos in a list. Just add some new in input below."/> : null
+            }
         </>
     )
 }

@@ -1,3 +1,14 @@
 {
-  "todo": []
+  "todo": [
+    {
+      "content": "1",
+      "finished": false,
+      "id": 1
+    },
+    {
+      "content": "2",
+      "finished": false,
+      "id": 2
+    }
+  ]
 }
