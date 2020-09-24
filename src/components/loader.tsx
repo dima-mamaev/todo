@@ -1,9 +1,17 @@
 import React from "react";
 
-const Loader: React.FC = () => {
+type LoaderType = {
+    message?:string
+}
+
+
+const Loader: React.FC<LoaderType> = ({message="Loading....."}) => {
     return (
         <div className="d-flex justify-content-center">
-            <div className="spinner-grow text-primary" role="status"/>
+            <div className="d-flex align-items-center" >
+                <p className="p-0 m-0" >{message}</p>
+                <div className="spinner-grow text-primary" role="status"/>
+            </div>
         </div>
     )
 }

@@ -1,21 +1,23 @@
 import {takeEvery, call, put} from "redux-saga/effects"
-import {ADD_NEW_TODO, TODO_FETCHING, TODO_FETCHING_ERROR, TODO_FETCHING_SUCCEED} from "../../actions/actionTypes";
+import { ADD_NEW_TODO} from "../../actions/actionTypes";
 import {fetchTodos, postTodos} from "../../actions/api";
-import {addFetchedTodos} from "../../actions/todos";
+import {addFetchedTodos, clearStore, todoFetching, todoFetchingError, todoFetchingSucceed} from "../../actions/todos";
+import {IActionTodo, ITodo} from "../../../interfaces/interfaces";
 
 
 export function* watchAddTodo() {
     yield takeEvery(ADD_NEW_TODO, workerAddTodo)
-    yield put({type: TODO_FETCHING})
+    yield put(todoFetching())
 }
 
-function* workerAddTodo(action: any) {
+function* workerAddTodo(action: IActionTodo) {
     try {
         yield call(postTodos, action.payload)
-        const data = yield call(fetchTodos)
-        yield put(addFetchedTodos(data))
-        yield put({type: TODO_FETCHING_SUCCEED})
+        const data:ITodo[] = yield call(fetchTodos)
+        yield put(addFetchedTodos(data.reverse()))
+        yield put(todoFetchingSucceed())
     } catch (e) {
-        yield put({type: TODO_FETCHING_ERROR, payload: e})
+        yield put(todoFetchingError(e.message))
+        yield put(clearStore())
     }
 }

@@ -9,6 +9,7 @@ import Alert from "./alertMessage";
 const TodoList: React.FC = () => {
     const [todos, setTodos] = useState<ITodo[]>([])
     const [request, setRequest] = useState<IRequest>({})
+
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchTodos())
@@ -26,6 +27,7 @@ const TodoList: React.FC = () => {
 
     function onDeleteHandler(id: number) {
         dispatch(deleteTodo(id))
+
     }
 
     function onCheckHandler(todo: ITodo) {
@@ -36,8 +38,12 @@ const TodoList: React.FC = () => {
 
     return (
         <>
+            {// eslint-disable-next-line
+                request.todos?.loading || request.todos?.error.status && <Loader/>
+            }
             {
-                request.todos?.loading && <Loader/>
+                request.todos?.error.message.includes("Failed to fetch") &&
+                <Alert message="Server is not available at the moment, try again later!"/>
             }
             <>
                 {

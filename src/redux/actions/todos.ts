@@ -1,4 +1,12 @@
-import {ADD_FETCHED_TODO, ADD_NEW_TODO, DELETE_TODO, FETCH_TODO, CHECK_TODO} from "./actionTypes";
+import {
+    ADD_FETCHED_TODO,
+    ADD_NEW_TODO,
+    DELETE_TODO,
+    FETCH_TODO,
+    CHECK_TODO,
+    TODO_FETCHING,
+    TODO_FETCHING_SUCCEED, TODO_FETCHING_ERROR, CLEAR_TODO
+} from "./actionTypes";
 import {ITodo} from "../../interfaces/interfaces";
 
 
@@ -10,7 +18,22 @@ export const addFetchedTodos = (todos:ITodo[]) => ({
     type: ADD_FETCHED_TODO,
     payload: todos
 })
+export const todoFetching = () => ({
+    type: TODO_FETCHING
+})
 
+export const todoFetchingSucceed = () => ({
+    type: TODO_FETCHING_SUCCEED
+})
+
+export const todoFetchingError = (message:string) => ({
+    type: TODO_FETCHING_ERROR,
+    payload: message
+})
+// Clear store
+export const clearStore = () =>({
+    type:CLEAR_TODO
+})
 
 // Adding new todo
 export const addNewTodo = (todo: ITodo) => ({

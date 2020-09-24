@@ -1,14 +1,14 @@
 import React, {useState} from "react";
 import Alert from "./alertMessage";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addNewTodo} from "../redux/actions/todos";
-import {ITodo} from "../interfaces/interfaces";
+import {IAppState, ITodo} from "../interfaces/interfaces";
 
 const Input: React.FC = () => {
     const dispatch = useDispatch()
+    const {todos} = useSelector((state: IAppState) => state.todoRequestState);
     const [value, setValue] = useState<string>("")
     const [inputError, setInputError] = useState<boolean>(false)
-
     function onChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
         setInputError(false)
         const todoMessage = event.target.value
@@ -64,9 +64,10 @@ const Input: React.FC = () => {
                     value={value}
                     onChange={onChangeHandler}
                     onKeyPress={onAddBtnHandler}
+                    disabled={todos.error.status}
                 />
                 <div className="input-group-append">
-                    <button className="input-group-text" onClick={onAddMouseHandler}>
+                    <button className="input-group-text" onClick={onAddMouseHandler} disabled={todos.error.status} >
                         Add
                     </button>
                 </div>
