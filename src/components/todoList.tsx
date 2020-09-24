@@ -4,6 +4,7 @@ import {IAppState, IRequest, ITodo} from "../interfaces/interfaces";
 import TodoItem from "./todoItem";
 import {deleteTodo, fetchTodos, checkTodo} from "../redux/actions/todos";
 import Loader from "./loader";
+import Alert from "./alertMessage";
 
 const TodoList: React.FC = () => {
     const [todos, setTodos] = useState<ITodo[]>([])
@@ -11,12 +12,13 @@ const TodoList: React.FC = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchTodos())
+        // eslint-disable-next-line
     }, [])
     const todoList = useSelector((state: IAppState) => state.todoState);
+    const requestTodo = useSelector((state: IAppState) => state.todoRequestState);
     useEffect(() => {
         setTodos([...todoList])
     }, [todoList])
-    const requestTodo = useSelector((state: IAppState) => state.todoRequestState);
     useEffect(() => {
         setRequest({...requestTodo})
     }, [requestTodo])
@@ -27,6 +29,7 @@ const TodoList: React.FC = () => {
     }
 
     function onCheckHandler(todo: ITodo) {
+        todo.finished = !todo.finished
         dispatch(checkTodo(todo))
     }
 
@@ -38,18 +41,20 @@ const TodoList: React.FC = () => {
             }
             <>
                 {
-                    todos.length === 0 && !request.todos?.loading  ? <p>no todos message</p> : <ul className="list-group">
-                        {
-                            todos.map(todo => {
-                                return <TodoItem key={todo.id}
-                                                 todo={todo}
-                                                 onDelete={onDeleteHandler}
-                                                 onCheck={onCheckHandler}/>
-                            })
-                        }
-                    </ul>
+                    todos.length === 0 && !request.todos?.loading ?
+                        <Alert color="alert alert-primary"
+                               message="There are no todos in a list. Just add some new in input below."/> :
+                        <ul className="list-group">
+                            {
+                                todos.map(todo => {
+                                    return <TodoItem key={todo.id}
+                                                     todo={todo}
+                                                     onDelete={onDeleteHandler}
+                                                     onCheck={onCheckHandler}/>
+                                })
+                            }
+                        </ul>
                 }
-
             </>
         </>
     )

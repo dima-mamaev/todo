@@ -1,6 +1,6 @@
 export interface ITodo {
     content?: string
-    id: number
+    id?: number
     finished?: boolean
 }
 

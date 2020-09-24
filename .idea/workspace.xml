@@ -20,19 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c2752d7-1977-422b-b937-0220ee51232e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/requests/todoRequests.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/db.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/loader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/loader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/noTodos.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/todoItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/todoItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/todoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/todoList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/interfaces/interfaces.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/interfaces.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/actionTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/actionTypes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/actions/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducers/requests.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/todo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/todo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/sagas/todos/addTodo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sagas/todos/addTodo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/sagas/todos/checkTodo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sagas/todos/checkTodo.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/sagas/todos/deleteTodo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sagas/todos/deleteTodo.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/sagas/todos/fetchTodo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/sagas/todos/fetchTodo.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +86,7 @@
       <workItem from="1600790648873" duration="11000" />
       <workItem from="1600844387293" duration="11369000" />
       <workItem from="1600859180184" duration="17871000" />
-      <workItem from="1600929840610" duration="7211000" />
+      <workItem from="1600929840610" duration="11476000" />
     </task>
     <servers />
   </component>

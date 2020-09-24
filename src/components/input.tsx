@@ -8,6 +8,7 @@ const Input: React.FC = () => {
     const dispatch = useDispatch()
     const [value, setValue] = useState<string>("")
     const [inputError, setInputError] = useState<boolean>(false)
+
     function onChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
         setInputError(false)
         const todoMessage = event.target.value
@@ -17,24 +18,41 @@ const Input: React.FC = () => {
         }
         setValue(todoMessage)
     }
-    function onAddHandler(event: React.MouseEvent) {
+
+    function onAddMouseHandler(event: React.MouseEvent) {
         if (value.length === 0) {
             setInputError(true)
             return
         }
-        const newTodo:ITodo = {
-            id: Math.round(Math.random()*100),
+        const newTodo: ITodo = {
             content: value,
-            finished:false
+            finished: false
         }
         dispatch(addNewTodo(newTodo))
         setValue("")
     }
 
+    function onAddBtnHandler(event: React.KeyboardEvent) {
+        if (event.key === "Enter") {
+            if (value.length === 0) {
+                setInputError(true)
+                return
+            }
+            const newTodo: ITodo = {
+                content: value,
+                finished: false
+            }
+            dispatch(addNewTodo(newTodo))
+            setValue("")
+        }
+
+    }
+
+
     return (
         <div className="input-group pt-3 pb-3 m-auto d-flex flex-column">
             {
-                inputError &&  <Alert message={"Typed data is empty or invalid"}  color={"alert alert-danger"} />
+                inputError && <Alert message={"Typed data is empty or invalid"} color={"alert alert-danger"}/>
             }
 
             <div className="input-group mb-3">
@@ -45,9 +63,10 @@ const Input: React.FC = () => {
                     placeholder="Type your todo"
                     value={value}
                     onChange={onChangeHandler}
+                    onKeyPress={onAddBtnHandler}
                 />
                 <div className="input-group-append">
-                    <button className="input-group-text" onClick={onAddHandler}>
+                    <button className="input-group-text" onClick={onAddMouseHandler}>
                         Add
                     </button>
                 </div>
