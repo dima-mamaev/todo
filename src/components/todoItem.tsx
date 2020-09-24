@@ -3,7 +3,7 @@ import {ITodo} from "../interfaces/interfaces";
 
 type TodoItem = {
     todo: ITodo;
-    onDelete(id: number): void;
+    onDelete(todo: ITodo): void;
     onCheck(todo: ITodo): void
 }
 
@@ -22,7 +22,7 @@ const TodoItem: React.FC<TodoItem> = ({todo, onDelete, onCheck}) => {
                        onChange={() => onCheck(todo)}/>
                 <p className={classes.join(" ")}>{todo.content} </p>
             </div>
-            <button className="btn btn-danger" onClick={() => onDelete(todo.id!)}> Delete</button>
+            <button className="btn btn-danger" onClick={() => onDelete(todo)}> Delete</button>
         </li>
     )
 }

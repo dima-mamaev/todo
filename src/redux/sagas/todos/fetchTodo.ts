@@ -1,8 +1,10 @@
 import {takeEvery, call, put} from "redux-saga/effects"
 import { FETCH_TODO} from "../../actions/actionTypes";
-import {fetchTodos} from "../../actions/api";
+import {delay, fetchTodos} from "../../actions/api";
 import {addFetchedTodos, clearStore, todoFetching, todoFetchingError, todoFetchingSucceed} from "../../actions/todos";
 import {ITodo} from "../../../interfaces/interfaces";
+
+
 
 export function* watchFetchTodo() {
     yield takeEvery(FETCH_TODO, workerFetchTodo)
@@ -11,11 +13,12 @@ export function* watchFetchTodo() {
 
 function* workerFetchTodo() {
     try {
+        yield delay(3000)
         const data:ITodo[] = yield call(fetchTodos)
         yield put(addFetchedTodos(data))
         yield put(todoFetchingSucceed())
     } catch (e) {
-        yield put(todoFetchingError(e.message))
+        yield put(todoFetchingError(e))
         yield put(clearStore())
     }
 }

@@ -5,12 +5,18 @@ import TodoItem from "./todoItem";
 import {deleteTodo, fetchTodos, checkTodo} from "../redux/actions/todos";
 import Loader from "./loader";
 import Alert from "./alertMessage";
-
+import Modal from "./modal";
+type ModalMessageType ={
+    show:boolean,
+    message: string
+}
 const TodoList: React.FC = () => {
+    const dispatch = useDispatch()
+
+    //Todos fetching, todos state
     const [todos, setTodos] = useState<ITodo[]>([])
     const [request, setRequest] = useState<IRequest>({})
 
-    const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchTodos())
         // eslint-disable-next-line
@@ -24,44 +30,55 @@ const TodoList: React.FC = () => {
         setRequest({...requestTodo})
     }, [requestTodo])
 
-
-    function onDeleteHandler(id: number) {
-        dispatch(deleteTodo(id))
-
+    // Todos handlers (delete & check toggle)
+    function onDeleteHandler(todo: ITodo) {
+        dispatch(deleteTodo(todo.id!))
+        modalMessage(` todo with id:${todo.id} deleted successfully`)
     }
-
     function onCheckHandler(todo: ITodo) {
         todo.finished = !todo.finished
         dispatch(checkTodo(todo))
     }
 
 
+    // Modal information window
+    const [modal, setModal]= useState<ModalMessageType>({show:false, message:""})
+    function modalMessage (message:string):void {
+        setModal({show:true, message})
+        setTimeout(()=>{setModal({show:false, message:""})},5000)
+    }
+    function modalMessageClose () {
+        setModal({show:false, message:""})
+    }
+
     return (
         <>
-            {// eslint-disable-next-line
-                request.todos?.loading || request.todos?.error.status && <Loader/>
+            {
+                request.todos?.error.status === true &&
+                <Alert message="Server is not available at the moment, try again later!"
+                       color="alert alert-danger"/>
+            }
+            { // eslint-disable-next-line
+                todos.length === 0 && <Alert color="alert alert-primary"
+                                             message="There are no todos in a list. Just add some new in input below."/>
             }
             {
-                request.todos?.error.message.includes("Failed to fetch") &&
-                <Alert message="Server is not available at the moment, try again later!"/>
+                modal.show && <Modal message={modal.message} onClose={modalMessageClose} />
             }
-            <>
+            <ul className="list-group">
                 {
-                    todos.length === 0 && !request.todos?.loading ?
-                        <Alert color="alert alert-primary"
-                               message="There are no todos in a list. Just add some new in input below."/> :
-                        <ul className="list-group">
-                            {
-                                todos.map(todo => {
-                                    return <TodoItem key={todo.id}
-                                                     todo={todo}
-                                                     onDelete={onDeleteHandler}
-                                                     onCheck={onCheckHandler}/>
-                                })
-                            }
-                        </ul>
+                    todos.map(todo => {
+                        return <TodoItem key={todo.id}
+                                         todo={todo}
+                                         onDelete={onDeleteHandler}
+                                         onCheck={onCheckHandler}/>
+                    })
                 }
-            </>
+            </ul>
+            {
+                request.todos?.loading && <Loader/>
+            }
+
         </>
     )
 }

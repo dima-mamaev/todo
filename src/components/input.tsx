@@ -7,6 +7,8 @@ import {IAppState, ITodo} from "../interfaces/interfaces";
 const Input: React.FC = () => {
     const dispatch = useDispatch()
     const {todos} = useSelector((state: IAppState) => state.todoRequestState);
+
+    // Input state & handlers
     const [value, setValue] = useState<string>("")
     const [inputError, setInputError] = useState<boolean>(false)
     function onChangeHandler(event: React.ChangeEvent<HTMLInputElement>) {
@@ -19,6 +21,7 @@ const Input: React.FC = () => {
         setValue(todoMessage)
     }
 
+    // Keyboard && Mouse events
     function onAddMouseHandler(event: React.MouseEvent) {
         if (value.length === 0) {
             setInputError(true)
@@ -31,7 +34,6 @@ const Input: React.FC = () => {
         dispatch(addNewTodo(newTodo))
         setValue("")
     }
-
     function onAddBtnHandler(event: React.KeyboardEvent) {
         if (event.key === "Enter") {
             if (value.length === 0) {
@@ -45,7 +47,6 @@ const Input: React.FC = () => {
             dispatch(addNewTodo(newTodo))
             setValue("")
         }
-
     }
 
 
@@ -64,10 +65,12 @@ const Input: React.FC = () => {
                     value={value}
                     onChange={onChangeHandler}
                     onKeyPress={onAddBtnHandler}
-                    disabled={todos.error.status}
+                    disabled={todos.error.status || !todos.loaded}
                 />
                 <div className="input-group-append">
-                    <button className="input-group-text" onClick={onAddMouseHandler} disabled={todos.error.status} >
+                    <button className="input-group-text"
+                            onClick={onAddMouseHandler}
+                            disabled={todos.error.status || !todos.loaded} >
                         Add
                     </button>
                 </div>

@@ -31,3 +31,5 @@ export const updateTodos = async (todo:ITodo) => {
         body: JSON.stringify(todo)
     }).then(response => response.json())
 }
+
+export const delay = (ms:any) => new Promise(res => setTimeout(res, ms))

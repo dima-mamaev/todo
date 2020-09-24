@@ -24,7 +24,6 @@ const todoRequests = (state = initialState, action: IActionRequest) => {
                         status: false,
                         message: ""
                     }
-
                 }
             }
         case TODO_FETCHING_SUCCEED :
@@ -37,20 +36,18 @@ const todoRequests = (state = initialState, action: IActionRequest) => {
                         status: false,
                         message: ""
                     }
-
                 }
             }
         case TODO_FETCHING_ERROR :
             return {
                 ...state, todos: {
                     ...state.todos,
-                    loading: true,
+                    loading: false,
                     loaded: false,
                     error: {
                         status: true,
                         message: action.payload
                     }
-
                 }
             }
         default:
