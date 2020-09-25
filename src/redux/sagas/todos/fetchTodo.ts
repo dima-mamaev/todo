@@ -13,7 +13,7 @@ export function* watchFetchTodo() {
 
 function* workerFetchTodo() {
     try {
-        yield delay(3000)
+        yield delay(2000)
         const data:ITodo[] = yield call(fetchTodos)
         yield put(addFetchedTodos(data.reverse()))
         yield put(todoFetchingSucceed())
