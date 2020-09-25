@@ -1,19 +1,28 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
+import Alert from "./components/alertMessage";
 import Layout from "./components/LayOut/layout";
-import ErrorPage from "./pages/404";
-import TodoListPage from "./pages/TodoListPage";
-import TodoUpdatePage from "./pages/TodoUpdatePage";
+import Loader from "./components/loader";
+import { IAppState } from "./interfaces/interfaces";
+import { fetchTodos } from "./redux/actions/todos";
+import RootRoute from "./routes";
 
 const App: React.FC = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchTodos());
+    // eslint-disable-next-line
+  }, []);
+  const {
+    todos: { loaded, loading, error },
+  } = useSelector((state: IAppState) => state.todoRequestState);
+
   return (
     <Layout>
-      <Switch>
-        <Route exact path="/" component={TodoListPage} />
-        <Route path="/update/:id" component={TodoUpdatePage} />
-        <Route path="*" component={ErrorPage} />
-      </Switch>
+      {loading && <Loader />}
+      {loaded && <RootRoute />}
+      {error.status && <Alert color="alert alert-danger" />}
     </Layout>
   );
 };

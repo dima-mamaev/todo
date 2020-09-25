@@ -1,80 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { IAppState, IRequest, ITodo } from "../interfaces/interfaces";
+import { IAppState, ITodo } from "../interfaces/interfaces";
 import TodoItem from "./todoItem";
-import { deleteTodo, fetchTodos, checkTodo } from "../redux/actions/todos";
-import Loader from "./loader";
+import { deleteTodo, checkTodo } from "../redux/actions/todos";
 import Alert from "./alertMessage";
-import Modal from "./modal";
-
-type ModalMessageType = {
-  show: boolean;
-  message: string;
-};
 
 const TodoList: React.FC = () => {
   const dispatch = useDispatch();
-
-  //Todos fetching, todos state
-  const [todos, setTodos] = useState<ITodo[]>([]);
-  const [request, setRequest] = useState<IRequest>({});
-
-  useEffect(() => {
-    dispatch(fetchTodos());
-    // eslint-disable-next-line
-  }, []);
-  const todoList = useSelector((state: IAppState) => state.todoState);
-  const requestTodo = useSelector((state: IAppState) => state.todoRequestState);
-  useEffect(() => {
-    setTodos([...todoList]);
-  }, [todoList]);
-  useEffect(() => {
-    setRequest({ ...requestTodo });
-  }, [requestTodo]);
+  const todos = useSelector((state: IAppState) => state.todoState);
 
   // Todos handlers (delete & check toggle)
   function onDeleteHandler(todo: ITodo) {
     dispatch(deleteTodo(todo.id!));
-    modalMessage(
-      ` Todo with: content : ${todo.content};id:${todo.id};deleted successfully.`
-    );
   }
-
   function onCheckHandler(todo: ITodo) {
     todo.finished = !todo.finished;
     dispatch(checkTodo(todo));
   }
-
-  // Modal information window
-  const [modal, setModal] = useState<ModalMessageType>({
-    show: false,
-    message: "",
-  });
-
-  function modalMessage(message: string): void {
-    setModal({ show: true, message });
-    setTimeout(() => {
-      setModal({ show: false, message: "" });
-    }, 5000);
-  }
-
-  function modalMessageClose() {
-    setModal({ show: false, message: "" });
-  }
-
   return (
     <>
-      {request.todos?.error.status === true && (
-        <Alert
-          message="Server is not available at the moment, try again later!"
-          color="alert alert-danger"
-        />
-      )}
-      {!requestTodo.todos.loading && !requestTodo.todos.error.status
-        ? modal.show && (
-            <Modal message={modal.message} onClose={modalMessageClose} />
-          )
-        : null}
       <ul className="list-group">
         {todos.map((todo) => {
           return (
@@ -87,15 +31,12 @@ const TodoList: React.FC = () => {
           );
         })}
       </ul>
-      {request.todos?.loading && <Loader />}
-      {!requestTodo.todos.loading &&
-      todoList.length === 0 &&
-      !requestTodo.todos.error.status ? (
+      {todos.length === 0 && (
         <Alert
           color="alert alert-primary"
           message="There are no todos in a list. Just add some new in input below."
         />
-      ) : null}
+      )}
     </>
   );
 };

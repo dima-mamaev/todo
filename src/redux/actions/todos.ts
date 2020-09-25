@@ -3,7 +3,7 @@ import {
   ADD_NEW_TODO,
   DELETE_TODO,
   FETCH_TODO,
-  CHECK_TODO,
+  UPDATE_TODO,
   TODO_FETCHING,
   TODO_FETCHING_SUCCEED,
   TODO_FETCHING_ERROR,
@@ -48,8 +48,8 @@ export const deleteTodo = (id: number) => ({
   payload: id,
 });
 
-// Check todo
+// Update todo
 export const checkTodo = (todo: ITodo) => ({
-  type: CHECK_TODO,
+  type: UPDATE_TODO,
   payload: todo,
 });

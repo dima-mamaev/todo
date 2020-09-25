@@ -6,10 +6,10 @@ type AlertType = {
 };
 
 const Alert: React.FC<AlertType> = ({
-  message = "Ooops something went wrong...",
+  message = "Ooops something went wrong. Please try again later!",
   color = "alert alert-primary",
 }) => (
-  <div className={color} role="alert">
+  <div className={`mt-5 mb-5 ${color}`} role="alert">
     {message}
   </div>
 );

@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Layout: React.FC = ({ children }) => {
+type LayoutType = {
+  children: React.ReactNode;
+};
+
+const Layout: React.FC<LayoutType> = ({ children }) => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">

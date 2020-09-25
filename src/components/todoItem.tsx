@@ -29,7 +29,7 @@ const TodoItem: React.FC<TodoItem> = ({ todo, onDelete, onCheck }) => {
       </div>
       <div>
         <button
-          className="btn btn-warning"
+          className="btn btn-warning mr-2"
           onClick={() => history.push(`update/${todo.id}`)}
         >
           Update todo
