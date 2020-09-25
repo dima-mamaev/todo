@@ -11,7 +11,7 @@ type UpdateFormType = {
 type Inputs = {
   id: number;
   content: string;
-  finished: string | boolean;
+  finished: boolean;
 };
 
 const UpdateForm: React.FC<UpdateFormType> = ({ todo }) => {
@@ -22,6 +22,7 @@ const UpdateForm: React.FC<UpdateFormType> = ({ todo }) => {
     const newTodo: ITodo = {
       id: todo.id,
       content: data.content,
+      finished: todo.finished,
     };
     dispatch(updateTodo(newTodo));
     setTimeout(() => {
