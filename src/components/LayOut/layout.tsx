@@ -6,7 +6,7 @@ const Layout: React.FC = ({ children }) => {
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
         <Link className="navbar-brand" to="/">
-          Navbar
+          Todo app
         </Link>
         <button
           className="navbar-toggler"

@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { ITodo } from "../interfaces/interfaces";
 
 type TodoItem = {
@@ -8,10 +9,13 @@ type TodoItem = {
 };
 
 const TodoItem: React.FC<TodoItem> = ({ todo, onDelete, onCheck }) => {
+  const history = useHistory();
+
   const classes: string[] = ["p-0 m-0 pl-3"];
   if (todo.finished) {
     classes.push("line-through");
   }
+
   return (
     <li className="list-group-item d-flex justify-content-between align-items-center pr-2">
       <div className="d-flex align-items-center">
@@ -23,9 +27,14 @@ const TodoItem: React.FC<TodoItem> = ({ todo, onDelete, onCheck }) => {
         />
         <p className={classes.join(" ")}>{todo.content} </p>
       </div>
+      <button
+        className="btn btn-warning"
+        onClick={() => history.push(`update/${todo.id}`)}
+      >
+        Update todo
+      </button>
       <button className="btn btn-danger" onClick={() => onDelete(todo)}>
-        {" "}
-        Delete
+        Delete todo
       </button>
     </li>
   );
