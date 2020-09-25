@@ -1,11 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 type LayoutType = {
   children: React.ReactNode;
 };
 
 const Layout: React.FC<LayoutType> = ({ children }) => {
+  const { pathname } = useLocation();
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
@@ -25,9 +27,11 @@ const Layout: React.FC<LayoutType> = ({ children }) => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <Link to="/" className="nav-link">
-              Home page
-            </Link>
+            {pathname !== "/" && (
+              <Link to="/" className="nav-link">
+                Home page
+              </Link>
+            )}
           </div>
         </div>
       </nav>

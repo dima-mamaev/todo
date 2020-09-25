@@ -1,20 +1,33 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { ITodo } from "../interfaces/interfaces";
+import { updateTodo } from "../redux/actions/todos";
 
 type UpdateFormType = {
   todo: ITodo;
 };
 type Inputs = {
+  id: number;
   content: string;
-  check: boolean;
+  finished: string | boolean;
 };
 
 const UpdateForm: React.FC<UpdateFormType> = ({ todo }) => {
-  const { register, handleSubmit, errors } = useForm<Inputs>();
-  const onSubmit = (data: Inputs) => console.log(data);
+  const dispatch = useDispatch();
   const history = useHistory();
+  const { register, handleSubmit, errors } = useForm<Inputs>();
+  const onSubmit = (data: Inputs) => {
+    const newTodo: ITodo = {
+      id: todo.id,
+      content: data.content,
+    };
+    dispatch(updateTodo(newTodo));
+    setTimeout(() => {
+      history.push("/");
+    }, 1000);
+  };
 
   return (
     <div className="card mt-5 ">
@@ -36,13 +49,6 @@ const UpdateForm: React.FC<UpdateFormType> = ({ todo }) => {
                 *Todo content field must contain at least 1 character.
               </small>
             )}
-          </div>
-          <div className="form-group d-flex flex-column">
-            <label>Complete status of todo:</label>
-            <select name="check" ref={register}>
-              <option value="false">to do</option>
-              <option value="true">completed</option>
-            </select>
           </div>
           <div className="d-flex justify-content-around">
             <button type="submit" className="btn btn-success">

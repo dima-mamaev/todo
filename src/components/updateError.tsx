@@ -10,7 +10,7 @@ const UpdateError: React.FC<UpdateErrorType> = ({ id }) => {
 
   setTimeout(() => {
     history.push("/");
-  }, 3500);
+  }, 3000);
 
   return (
     <div className="jumbotron jumbotron-fluid mt-3">

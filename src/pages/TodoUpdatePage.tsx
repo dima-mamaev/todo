@@ -6,7 +6,7 @@ import UpdateForm from "../components/updateForm";
 import { IAppState } from "../interfaces/interfaces";
 
 const TodoUpdatePage: React.FC = () => {
-  // Receive current todo
+  // Receive current todo id
   const { pathname } = useLocation();
   const currentTodoId = +pathname.slice(8);
   const todoList = useSelector((state: IAppState) => state.todoState);

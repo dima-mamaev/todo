@@ -49,7 +49,7 @@ export const deleteTodo = (id: number) => ({
 });
 
 // Update todo
-export const checkTodo = (todo: ITodo) => ({
+export const updateTodo = (todo: ITodo) => ({
   type: UPDATE_TODO,
   payload: todo,
 });

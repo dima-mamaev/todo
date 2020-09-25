@@ -6,14 +6,13 @@
       "id": 1
     },
     {
-      "content": "3",
+      "content": "2",
       "finished": false,
       "id": 2
     },
     {
-      "content": "2",
-      "finished": false,
-      "id": 3
+      "id": 3,
+      "content": "third todo"
     }
   ]
 }

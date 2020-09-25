@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IAppState, ITodo } from "../interfaces/interfaces";
 import TodoItem from "./todoItem";
-import { deleteTodo, checkTodo } from "../redux/actions/todos";
+import { deleteTodo, updateTodo } from "../redux/actions/todos";
 import Alert from "./alertMessage";
 
 const TodoList: React.FC = () => {
@@ -15,7 +15,7 @@ const TodoList: React.FC = () => {
   }
   function onCheckHandler(todo: ITodo) {
     todo.finished = !todo.finished;
-    dispatch(checkTodo(todo));
+    dispatch(updateTodo(todo));
   }
   return (
     <>
