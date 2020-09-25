@@ -13,13 +13,7 @@ const TodoUpdatePage: React.FC = () => {
   const currentTodo = todoList.find((todo) => todo.id === currentTodoId);
 
   return (
-    <>
-      {currentTodo ? (
-        <UpdateForm todo={currentTodo!} />
-      ) : (
-        <UpdateError id={currentTodoId} />
-      )}
-    </>
+    <>{currentTodo ? <UpdateForm todo={currentTodo!} /> : <UpdateError />}</>
   );
 };
 

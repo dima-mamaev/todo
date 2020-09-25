@@ -1,11 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-type UpdateErrorType = {
-  id: number;
-};
-
-const UpdateError: React.FC<UpdateErrorType> = ({ id }) => {
+const UpdateError: React.FC = () => {
   const history = useHistory();
 
   setTimeout(() => {
@@ -17,7 +13,7 @@ const UpdateError: React.FC<UpdateErrorType> = ({ id }) => {
       <div className="container">
         <h1 className="display-4">Error</h1>
         <p className="lead">
-          Todo with id: {id} doesn't exist. Redirecting to main page....
+          Todo with such id doesn't exist. Redirecting to main page....
         </p>
       </div>
     </div>

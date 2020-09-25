@@ -19,7 +19,6 @@ function* workerAddTodo(action: IActionTodo) {
   try {
     yield call(postTodos, action.payload);
     const data: ITodo[] = yield call(fetchTodos);
-
     yield put(addFetchedTodos(data.reverse()));
     yield put(todoFetchingSucceed());
   } catch (e) {

@@ -1,19 +1,29 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { ITodo } from "../interfaces/interfaces";
+import { deleteTodo, updateTodo } from "../redux/actions/todos";
 
 type TodoItem = {
   todo: ITodo;
-  onDelete(todo: ITodo): void;
-  onCheck(todo: ITodo): void;
 };
 
-const TodoItem: React.FC<TodoItem> = ({ todo, onDelete, onCheck }) => {
+const TodoItem: React.FC<TodoItem> = ({ todo }) => {
+  const dispatch = useDispatch();
   const history = useHistory();
 
   const classes: string[] = ["p-0 m-0 pl-3"];
   if (todo.finished) {
     classes.push("line-through");
+  }
+
+  // Todos handlers (delete & check toggle)
+  function onDeleteHandler(todo: ITodo) {
+    dispatch(deleteTodo(todo.id!));
+  }
+  function onCheckHandler(todo: ITodo) {
+    todo.finished = !todo.finished;
+    dispatch(updateTodo(todo));
   }
 
   return (
@@ -23,7 +33,7 @@ const TodoItem: React.FC<TodoItem> = ({ todo, onDelete, onCheck }) => {
           className="form-check-input mt-0 position-relative ml-2"
           type="checkbox"
           checked={todo.finished}
-          onChange={() => onCheck(todo)}
+          onChange={() => onCheckHandler(todo)}
         />
         <p className={classes.join(" ")}>{todo.content} </p>
       </div>
@@ -34,7 +44,10 @@ const TodoItem: React.FC<TodoItem> = ({ todo, onDelete, onCheck }) => {
         >
           Update todo
         </button>
-        <button className="btn btn-danger" onClick={() => onDelete(todo)}>
+        <button
+          className="btn btn-danger"
+          onClick={() => onDeleteHandler(todo)}
+        >
           Delete todo
         </button>
       </div>
