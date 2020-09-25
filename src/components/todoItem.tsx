@@ -27,15 +27,17 @@ const TodoItem: React.FC<TodoItem> = ({ todo, onDelete, onCheck }) => {
         />
         <p className={classes.join(" ")}>{todo.content} </p>
       </div>
-      <button
-        className="btn btn-warning"
-        onClick={() => history.push(`update/${todo.id}`)}
-      >
-        Update todo
-      </button>
-      <button className="btn btn-danger" onClick={() => onDelete(todo)}>
-        Delete todo
-      </button>
+      <div>
+        <button
+          className="btn btn-warning"
+          onClick={() => history.push(`update/${todo.id}`)}
+        >
+          Update todo
+        </button>
+        <button className="btn btn-danger" onClick={() => onDelete(todo)}>
+          Delete todo
+        </button>
+      </div>
     </li>
   );
 };

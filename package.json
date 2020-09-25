@@ -1,5 +1,5 @@
 {
-  "homepage": "http://dima-mamaev.github.io/todo",
+  "homepage": "http://localhost:3000",
   "name": "todo",
   "version": "0.1.0",
   "private": true,
@@ -16,6 +16,7 @@
     "@types/redux-logger": "^3.0.8",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-hook-form": "^6.8.5",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
